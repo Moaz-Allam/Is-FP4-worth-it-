@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FP4 Paper Plan</title>
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#1d1d1f; --ink-2:#4a4a50; --muted:#77777f;
+  --line:#e4e2dc; --accent:#2a6db0; --accent-soft:#e7f0fa;
+  --moaz:#2a6db0; --moaz-soft:#e7f0fa; --ziad:#8a5a12; --ziad-soft:#f8eedc; --both:#4b6b3a; --both-soft:#e9f1e3;
+  --warn:#9a3b1f; --warn-soft:#fbe9e3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16171a; --surface:#1e1f23; --ink:#ececee; --ink-2:#c4c4ca; --muted:#8e8e96;
+    --line:#2f3036; --accent:#7fb2e5; --accent-soft:#1f2b38;
+    --moaz:#7fb2e5; --moaz-soft:#1f2b38; --ziad:#e2b56a; --ziad-soft:#33291a; --both:#9fc58a; --both-soft:#223020;
+    --warn:#f0a58c; --warn-soft:#3a231c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16171a; --surface:#1e1f23; --ink:#ececee; --ink-2:#c4c4ca; --muted:#8e8e96;
+  --line:#2f3036; --accent:#7fb2e5; --accent-soft:#1f2b38;
+  --moaz:#7fb2e5; --moaz-soft:#1f2b38; --ziad:#e2b56a; --ziad-soft:#33291a; --both:#9fc58a; --both-soft:#223020;
+  --warn:#f0a58c; --warn-soft:#3a231c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:980px;margin:0 auto;padding:32px 16px 80px}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 6px}
+h2{font-size:1.35rem;margin:44px 0 10px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:1.08rem;margin:26px 0 8px}
+p{margin:8px 0}
+.sub{color:var(--ink-2);margin:0 0 18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.82rem;font-weight:600;white-space:nowrap}
+.m{background:var(--moaz-soft);color:var(--moaz)} .z{background:var(--ziad-soft);color:var(--ziad)} .b{background:var(--both-soft);color:var(--both)}
+.warn{background:var(--warn-soft);color:var(--warn)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.callout{background:var(--accent-soft);border-radius:10px;padding:12px 16px;margin:14px 0}
+.callout.w{background:var(--warn-soft)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}}
+.tw{overflow-x:auto;margin:10px 0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-weight:650;color:var(--ink-2);background:transparent;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+code{font:.86em ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--accent-soft);padding:1px 5px;border-radius:4px}
+ul,ol{margin:6px 0 6px 0;padding-left:22px} li{margin:3px 0}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:650}
+.toc{columns:2;column-gap:28px;padding-left:18px}
+@media (max-width:620px){.toc{columns:1}}
+.toc a{color:var(--accent);text-decoration:none}
+.dl{font-weight:700}
+.small{font-size:.88rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+
+<h1>When Is FP4 Worth It? Paper plan</h1>
+<p class="sub">CSCE 4930 research paper, Fall 2026. Two authors: Moaz and Ziad. From today (Sun 8 Nov) to the draft (Thu 12 Nov) and the final paper (Thu 3 Dec).</p>
+<div class="meta">
+  <span class="chip m">Moaz: Windows laptop (7.4 GB RAM), SparkFun Edge board and toolchain</span>
+  <span class="chip z">Ziad: MacBook Pro M1 Pro, 16 GB, runs the long model jobs</span>
+  <span class="chip b">Both: writing, reading, review</span>
+</div>
+
+<div class="callout w"><b>Course rules that shape the plan.</b> AI tools must not write the paper's content; every citation must be checked; the paper must end with an AI acknowledgment; Turnitin similarity should stay under 20%; ACM two-column format; 6 to 9 pages including references; no late submissions for the final paper. This plan, the reference sheet and any experiment code are allowed as preparation. The prose is yours.</div>
+
+<h3>Contents</h3>
+<ol class="toc">
+  <li><a href="#goal">Goal and research question</a></li>
+  <li><a href="#split">Who does what</a></li>
+  <li><a href="#setup">Setup tonight</a></li>
+  <li><a href="#reading">Reading split</a></li>
+  <li><a href="#exp">Experiments in detail</a></li>
+  <li><a href="#draft">Draft week, day by day</a></li>
+  <li><a href="#final">Final three weeks</a></li>
+  <li><a href="#paper">Paper outline and page budget</a></li>
+  <li><a href="#done">Done checklists</a></li>
+  <li><a href="#risks">Risks and fallbacks</a></li>
+  <li><a href="#refs">Where things are</a></li>
+</ol>
+
+<h2 id="goal">1. Goal and research question</h2>
+<div class="card">
+<p><b>Question.</b> At about 4 bits per weight, how much accuracy do MXFP4 and NVFP4 lose compared with FP16 and INT4 on a small LLM, and does the 4-bit storage turn into speed on 32-bit general-purpose hardware without native FP4 support, compared with hardware that has it (NVIDIA Blackwell)?</p>
+<p><b>Why this answers the professor's comment.</b> He asked us to consider running these formats on specialized hardware versus 32-bit general-purpose hardware. E2 and E3 below measure and model exactly that, using our own Cortex-M4F board, which no other group has.</p>
+<p><b>Claims from the literature we test</b> (page numbers are in <code>paper/references_verified.md</code>):</p>
+<ul>
+  <li>MXFP4 loses noticeably more accuracy than NVFP4, about 10% relative in W4A4 (Egiazarian et al., ICLR 2026), and FP4 is "not an automatic upgrade over INT4". Tested by E1.</li>
+  <li>How the MXFP4 power-of-two scale is chosen matters: the OCP rule rounds down and clamps; NVIDIA rounds up to avoid saturation but wastes range. Tested by E4 at equal storage.</li>
+  <li>FP4 speedups need hardware support: 4-6× math over BF16 on Blackwell, but 4-bit can be slower than FP16 on hardware without native support (De-Quantization Penalties, IEEE CAL 2026). Tested by E2 and E3.</li>
+</ul>
+</div>
+
+<h2 id="split">2. Who does what</h2>
+<p>Ziad's MacBook (16 GB, Apple GPU through PyTorch MPS) takes every job that runs a language model. Moaz takes the board, the hardware measurements and the analytical model, plus the Overleaf and reference bookkeeping. Both read, write and review an equal share.</p>
+<div class="tw"><table>
+<tr><th>Area</th><th>Owner</th><th>Main outputs</th><th>Est. hours</th></tr>
+<tr><td>E1: accuracy of FP16, INT4, MXFP4, NVFP4 on GPT-2 and Qwen3-1.7B</td><td><span class="chip z">Ziad</span></td><td>Quantization code, perplexity and error tables, Pareto figure</td><td class="n">10</td></tr>
+<tr><td>E4: MXFP4 scale rules at equal storage (and optional NVFP4 4/6 replication)</td><td><span class="chip z">Ziad</span></td><td>Error and perplexity table, short analysis</td><td class="n">5</td></tr>
+<tr><td>E2: decode cost on 32-bit general-purpose hardware (Cortex-M4F board, laptop, M1)</td><td><span class="chip m">Moaz</span></td><td>Firmware and C benchmark, cycles per MAC and bytes per weight table</td><td class="n">10</td></tr>
+<tr><td>E3: analytical / roofline model, specialized vs general-purpose</td><td><span class="chip m">Moaz</span></td><td>Model, roofline figure, table of predicted time per token</td><td class="n">5</td></tr>
+<tr><td>Background section (formats, bits per element)</td><td><span class="chip z">Ziad</span></td><td>Section 2 text, format table, block diagram</td><td class="n">4</td></tr>
+<tr><td>Survey: block formats and hardware support</td><td><span class="chip m">Moaz</span></td><td>Sections 3.1 and 3.4</td><td class="n">6</td></tr>
+<tr><td>Survey: LLM 4-bit methods and FP4 for LLMs</td><td><span class="chip z">Ziad</span></td><td>Sections 3.2 and 3.3</td><td class="n">6</td></tr>
+<tr><td>Critical analysis</td><td><span class="chip b">Both</span></td><td>Moaz: shortcomings and the specialized vs general-purpose part. Ziad: strengths and future directions</td><td class="n">4 + 4</td></tr>
+<tr><td>Introduction, abstract, conclusion</td><td><span class="chip b">Both</span></td><td>Moaz drafts the introduction, Ziad the conclusion; each edits the other</td><td class="n">2 + 2</td></tr>
+<tr><td>Overleaf, ACM template, BibTeX, Turnitin runs, submission</td><td><span class="chip m">Moaz</span></td><td>Compiling paper, verified bibliography, similarity reports</td><td class="n">4</td></tr>
+<tr><td>Figures style (one consistent look)</td><td><span class="chip z">Ziad</span></td><td>One plotting script used for all figures</td><td class="n">2</td></tr>
+</table></div>
+<p class="small">Total about 32 hours each over 26 days. Remember the course project's final tag is 6 Dec, so front-load the paper.</p>
+
+<h2 id="setup">3. Setup tonight (Sun 8 Nov, about 1 hour each)</h2>
+<div class="grid2">
+<div class="card"><span class="chip m">Moaz</span>
+<ol>
+  <li>Create a private GitHub repo, e.g. <code>fp4-survey</code>, with folders <code>e1_accuracy/</code>, <code>e2_hardware/</code>, <code>e3_model/</code>, <code>figures/</code>, <code>results/</code>. Add Ziad.</li>
+  <li>Create the Overleaf project from the official ACM template: <code>\documentclass[sigconf]{acmart}</code>. Share with Ziad. Add <code>refs.bib</code>.</li>
+  <li>Put the section skeleton from <a href="#paper">part 8</a> in Overleaf, with each section's owner in a comment.</li>
+  <li>Copy <code>paper/references_verified.md</code> into the repo (as notes, not paper text).</li>
+</ol></div>
+<div class="card"><span class="chip z">Ziad</span>
+<ol>
+  <li>Python 3.11 or 3.12 venv; <code>pip install torch transformers datasets accelerate numpy matplotlib</code>.</li>
+  <li>Check the GPU works: <code>python -c "import torch;print(torch.backends.mps.is_available())"</code> should print True.</li>
+  <li>Download in the background (several GB): <code>gpt2</code> (124M), <code>Qwen/Qwen3-1.7B</code>, and the <code>wikitext-2-raw-v1</code> dataset. Fallback model if Qwen3-1.7B is too slow: <code>Qwen/Qwen2.5-0.5B</code>.</li>
+  <li>Run FP16 perplexity of GPT-2 on WikiText-2 once to time it.</li>
+</ol></div>
+</div>
+
+<h2 id="reading">4. Reading split</h2>
+<p>Each person reads their papers and writes one <b>reading card</b> per paper, in their own words, in a shared file in the repo: the core idea, the method, two or three key results <b>with page numbers</b>, one limitation, and which section of our paper uses it. The cards become the survey text later, so writing them carefully is half of section 3.</p>
+<div class="grid2">
+<div class="card"><span class="chip m">Moaz: 9 papers</span>
+<ol>
+  <li>HBFP, NeurIPS 2018 (course reading)</li>
+  <li>MSFP, NeurIPS 2020 (syllabus)</li>
+  <li>MX formats, arXiv 2310.10537 (course reading)</li>
+  <li>Shared Microexponents, ISCA 2023 (course reading)</li>
+  <li>FP8 Formats, arXiv 2209.05433</li>
+  <li>NVFP4 pretraining, arXiv 2509.25149 (hardware parts, Table 1, Appendix B.4)</li>
+  <li>De-Quantization Penalties, IEEE CAL 2026</li>
+  <li>MXDOTP 2025 and VMXDOTP 2026 (RISC-V MX hardware)</li>
+  <li>XpulpNN, DATE 2020 (sub-byte on microcontrollers)</li>
+</ol></div>
+<div class="card"><span class="chip z">Ziad: 9 papers</span>
+<ol>
+  <li>GPTQ, ICLR 2023</li>
+  <li>AWQ, MLSys 2024</li>
+  <li>QuaRot, NeurIPS 2024</li>
+  <li>Egiazarian et al., ICLR 2026 (central paper: read all of it)</li>
+  <li>Four Over Six, arXiv 2512.02010</li>
+  <li>Training LLMs with MXFP4, arXiv 2502.20586</li>
+  <li>INT v.s. FP, arXiv 2510.25602</li>
+  <li>Is Finer Better?, 2026</li>
+  <li>SqueezeLLM, 2023 (memory-bound decoding)</li>
+</ol></div>
+</div>
+<p class="small">All arXiv ones are in the alphaXiv folder "CSCE4930 FP4 survey". The survey must cover at least 6 papers, at least 3 from the last five years, and at least half beyond the syllabus. This list has 18, of which 4 are course readings.</p>
+
+<h2 id="exp">5. Experiments in detail</h2>
+
+<details open>
+<summary>E1. Accuracy vs bits per element <span class="chip z">Ziad</span> (preliminary results in the draft)</summary>
+<p><b>Setup.</b> Weight-only, simulated ("fake") quantization: quantize each weight, convert straight back to float, run the model normally. This measures accuracy, not speed (speed is E2/E3). Quantize every linear layer's weight; keep embeddings, the output head, norms and biases in FP16, and say so in the paper.</p>
+<div class="tw"><table>
+<tr><th>Format</th><th>Block</th><th>Scale</th><th>Bits / weight</th><th>Rule</th></tr>
+<tr><td>FP16 (baseline)</td><td>n/a</td><td>n/a</td><td class="n">16</td><td>none</td></tr>
+<tr><td>INT4, group 128</td><td>128</td><td>FP16, symmetric</td><td class="n">4.125</td><td>s = max|w| / 7, round, clamp to [−8, 7]</td></tr>
+<tr><td>INT4, group 32</td><td>32</td><td>FP16, symmetric</td><td class="n">4.5</td><td>same</td></tr>
+<tr><td>MXFP4 (OCP)</td><td>32</td><td>E8M0 (power of two)</td><td class="n">4.25</td><td>X = 2^(floor(log2 max|w|) − 2), round to E2M1, clamp at ±6</td></tr>
+<tr><td>NVFP4</td><td>16</td><td>E4M3 + FP32 per tensor</td><td class="n">4.5</td><td>block scale = max|w| / 6, stored in E4M3; tensor scale keeps block scales in E4M3 range</td></tr>
+</table></div>
+<p><b>Important detail.</b> Group along the reduction (input) dimension. Hugging Face GPT-2 uses <code>Conv1D</code> layers whose weight is stored as (in, out), the transpose of <code>nn.Linear</code> (out, in) used by Qwen. Block along the input axis in both.</p>
+<p><b>Correctness tests before any model run</b> (put them in <code>e1_accuracy/test_quant.py</code>):</p>
+<ul>
+  <li>E2M1 grid is exactly ±{0, 0.5, 1, 1.5, 2, 3, 4, 6}.</li>
+  <li>HW3 Q3: A = [24, −12, 6, 2, 0…] gives X = 4 and elements [6, −3, 1.5, 0.5]; B gives X = 0.5 and [0.5, 2, −1, 4]; dot product −5.</li>
+  <li>Four Over Six, Table 2 (p. 5): NVFP4 of [10, 20, 30, 40] dequantizes to [9.75, 19.5, 26, 39] with MSE 4.33.</li>
+</ul>
+<p><b>Perplexity.</b> WikiText-2 raw test set, non-overlapping windows of 1024 tokens (GPT-2) or 2048 (Qwen), mean negative log-likelihood over all tokens, perplexity = e^NLL. Same windows for every format.</p>
+<p><b>Also record</b> for every format: weight MSE and signal-to-quantization-noise ratio (SQNR, in dB) over all quantized weights; fraction of weights clamped; bits per weight; run time.</p>
+<p><b>Runs.</b> 5 formats × 2 models = 10 runs. GPT-2 runs take minutes; Qwen3-1.7B runs may take 10-30 minutes each on MPS, so run them overnight with a script that writes one JSON line per run to <code>results/e1.jsonl</code>.</p>
+<p><b>Figures and tables.</b> (1) Perplexity vs bits per weight for both models (one marker per format). (2) SQNR per format. (3) Table with all numbers.</p>
+<p><b>How to compare with the literature.</b> Egiazarian et al. and Four Over Six report W4A4 (weights and activations) and word perplexity, so the numbers will not match ours. Compare trends (ranking of formats, size of gaps), not values, and say so.</p>
+</details>
+
+<details open>
+<summary>E4. MXFP4 scale selection at equal storage <span class="chip z">Ziad</span></summary>
+<p><b>Claim tested.</b> The OCP MX algorithm rounds the scale exponent down and clamps the largest values (MX paper, Algorithm 1). NVIDIA rounds MXFP4 scales up to avoid saturation, which wastes up to a binade (NVFP4 paper, Appendix B.4). Four Over Six's trick cannot apply to MXFP4 because E8M0 only steps by factors of 2 (their §5.2). Which rule gives lower error?</p>
+<div class="tw"><table>
+<tr><th>Variant</th><th>Rule per 32-element block</th><th>Bits / weight</th></tr>
+<tr><td>MXFP4-floor (OCP)</td><td>X = 2^(floor(log2 max) − 2); clamp to ±6</td><td class="n">4.25</td></tr>
+<tr><td>MXFP4-up</td><td>smallest power of two with max / X ≤ 6 (no clamping)</td><td class="n">4.25</td></tr>
+<tr><td>MXFP4-best</td><td>try X and 2X; keep the one with lower block MSE</td><td class="n">4.25</td></tr>
+<tr><td>Optional: NVFP4 + 4/6</td><td>replicate Four Over Six: scale max to 6 and to 4, keep lower MSE</td><td class="n">4.5</td></tr>
+</table></div>
+<p>Report weight MSE, SQNR, clamp fraction and perplexity on both models. This reuses the E1 code, so it is cheap once E1 works. Cite Egiazarian Appendix H (MXFP scale fitting) as related prior work, not as ours.</p>
+</details>
+
+<details open>
+<summary>E2. Cost on 32-bit general-purpose hardware <span class="chip m">Moaz</span> (described in the draft, results in the final)</summary>
+<p><b>Claim tested.</b> Without native FP4 hardware, each weight must be unpacked and decoded in software, so the bandwidth saving may be cancelled by extra instructions.</p>
+<p><b>Kernel.</b> A dot product of length N with weights in each format and FP32 activations:</p>
+<ul>
+  <li><b>FP32:</b> 4 bytes per weight, one fused multiply-add.</li>
+  <li><b>INT8 + per-block FP32 scale:</b> 1.125 bytes per weight; integer to float, multiply-add, scale per block.</li>
+  <li><b>MXFP4, software decode:</b> 0.53 bytes per weight; extract a 4-bit code (shift and mask), look it up in a 16-entry float table, multiply-add, then multiply the block sum by the block scale (from the E8M0 exponent).</li>
+  <li><b>Optional MXFP4 with a 256-entry table</b> decoding two codes per byte.</li>
+</ul>
+<p><b>Platforms.</b></p>
+<ol>
+  <li><b>SparkFun Edge (Cortex-M4F, 96 MHz).</b> Reuse the project's Docker toolchain and DWT cycle counter. Weights in Flash, activations in SRAM, N = 4096. Report cycles per weight, bytes per weight, code size.</li>
+  <li><b>Moaz's laptop (x86-64)</b> and <b>Ziad's M1 (ARM)</b>: the same C file with <code>-O3</code>, N large enough to exceed the caches (e.g. 64 M weights) so the loop is memory-bound, and small N (fits in cache) to see the pure decode cost. Report GB/s of weights streamed and time per weight.</li>
+</ol>
+<p><b>Expected outcome</b> (to be checked): fewer bytes per weight but more cycles per weight for MXFP4. Whether it is faster overall depends on whether the platform was memory-bound.</p>
+</details>
+
+<details open>
+<summary>E3. Analytical model: specialized vs general-purpose <span class="chip m">Moaz</span></summary>
+<p>For batch-1 token generation each weight is read once per token. Time per token ≈ max(weight bytes ÷ memory bandwidth, weights × decode-and-MAC time per weight). Weight bytes = parameters × bits per weight ÷ 8.</p>
+<ul>
+  <li><b>Specialized (Blackwell):</b> decode is free in the Tensor Core, so the best case over FP16 is 16 ÷ 4.25 = 3.76× (MXFP4) or 16 ÷ 4.5 = 3.56× (NVFP4). Compare with reported 2.2× end-to-end (Egiazarian et al., p.10) and 4-6× math speed (NVFP4 paper, Table 1).</li>
+  <li><b>General-purpose:</b> use E2's measured time per weight and a measured memory bandwidth for the laptop and M1 (a simple copy benchmark). For the Cortex-M4F, use the project's measured Flash and SRAM rates.</li>
+  <li><b>Output:</b> one roofline-style figure and a table of predicted time per token for GPT-2 and Qwen3-1.7B in FP16, INT4 and MXFP4 on each platform.</li>
+</ul>
+</details>
+
+<h2 id="draft">6. Draft week, day by day (due Thu 12 Nov)</h2>
+<p>The draft must contain a substantially complete literature survey and a description of the experiment, with preliminary results if possible.</p>
+<div class="tw"><table>
+<tr><th>Day</th><th><span class="chip m">Moaz</span></th><th><span class="chip z">Ziad</span></th></tr>
+<tr><td class="n">Sun 8</td><td>Repo, Overleaf skeleton, reference notes in repo</td><td>Python env, model and dataset downloads, GPT-2 FP16 perplexity timed</td></tr>
+<tr><td class="n">Mon 9</td><td>Read and card papers 1-5 (block formats). Start BibTeX: copy each entry from the publisher or arXiv page, never from memory</td><td>Write <code>quant.py</code> (5 formats) and the three correctness tests; all must pass</td></tr>
+<tr><td class="n">Tue 10</td><td>Read and card papers 6-9 (hardware). Write survey 3.1 (block formats)</td><td>Run E1 on GPT-2 (all formats); start Qwen3-1.7B runs overnight. Read and card GPTQ, AWQ, QuaRot, Egiazarian</td></tr>
+<tr><td class="n">Wed 11</td><td>Write survey 3.4 (hardware support), Introduction, the E2/E3 design paragraphs; bullet skeleton of the specialized vs general-purpose analysis</td><td>Write Background (section 2) and survey 3.2, 3.3; the E1/E4 design paragraphs; first table and figure of E1 results</td></tr>
+<tr><td class="n">Thu 12</td><td colspan="2">Morning: swap sections and review each other's text (accuracy of every citation and number). Afternoon: abstract, AI acknowledgment, check page count, Turnitin, submit PDF on Canvas. Submit well before the deadline.</td></tr>
+</table></div>
+
+<h2 id="final">7. Final three weeks (Fri 13 Nov to Thu 3 Dec)</h2>
+<div class="tw"><table>
+<tr><th>Week</th><th><span class="chip m">Moaz</span></th><th><span class="chip z">Ziad</span></th><th>Joint milestone</th></tr>
+<tr><td class="n">13-19 Nov</td><td>E2 on the board: firmware, measurements, table. Act on the professor's draft feedback in your sections</td><td>Finish E1 on Qwen3-1.7B; run E4 on both models; act on feedback in your sections</td><td>Sat 21 Nov: all E1, E4 and board E2 numbers final</td></tr>
+<tr><td class="n">20-26 Nov</td><td>E2 on laptop and M1 (Ziad runs the M1 binary); E3 model and roofline figure; write analysis of specialized vs general-purpose</td><td>All figures in one style; finish strengths and future directions; Experiment section results text</td><td>Thu 26 Nov: full paper text complete; first Turnitin run</td></tr>
+<tr><td class="n">27 Nov-3 Dec</td><td>Conclusion edits, references final check (open every source again), format and page limit</td><td>Conclusion and future work, abstract final, read the whole paper aloud for flow</td><td>Tue 1 Dec: final Turnitin; Wed 2 Dec: submit (one day early)</td></tr>
+</table></div>
+<div class="callout w"><b>Overlap warning.</b> The course project's final tag is due 6 Dec (INT8 and two optimizations), with interviews on 7 and 10 Dec. Finish the paper by 2 Dec so the last days go to the project. E2 on the board can share the project's toolchain, so keep it small.</div>
+
+<h2 id="paper">8. Paper outline and page budget (8 pages target, 9 maximum)</h2>
+<div class="tw"><table>
+<tr><th>Section</th><th>Pages</th><th>Owner</th><th>Content</th></tr>
+<tr><td>Abstract</td><td class="n">0.2</td><td><span class="chip b">Both</span></td><td>Question, what we surveyed, what the experiments show</td></tr>
+<tr><td>1 Introduction</td><td class="n">0.7</td><td><span class="chip m">Moaz</span></td><td>Why 4-bit matters for LLM inference; the question; contributions</td></tr>
+<tr><td>2 Background</td><td class="n">1.0</td><td><span class="chip z">Ziad</span></td><td>FP16, INT4 group quantization, BFP, MXFP4, NVFP4; table of bits per weight; block diagram</td></tr>
+<tr><td>3 Survey</td><td class="n">2.0</td><td><span class="chip b">Both</span></td><td>3.1 Block formats (Moaz); 3.2 4-bit LLM methods (Ziad); 3.3 FP4 for LLMs (Ziad); 3.4 Hardware support (Moaz). Group by theme, not paper by paper</td></tr>
+<tr><td>4 Critical analysis</td><td class="n">1.3</td><td><span class="chip b">Both</span></td><td>Strengths, shortcomings, future directions, and specialized vs 32-bit general-purpose hardware. Synthesize across papers</td></tr>
+<tr><td>5 Experiments</td><td class="n">2.0</td><td><span class="chip b">Both</span></td><td>Setup, E1, E4 (Ziad); E2, E3 (Moaz); each result tied to the claim it tests</td></tr>
+<tr><td>6 Conclusion and future work</td><td class="n">0.4</td><td><span class="chip z">Ziad</span></td><td>When FP4 is worth it; what we would do next</td></tr>
+<tr><td>References + AI acknowledgment</td><td class="n">0.8</td><td><span class="chip m">Moaz</span></td><td>Verified entries; short AI statement</td></tr>
+</table></div>
+
+<h2 id="done">9. Done checklists</h2>
+<div class="grid2">
+<div class="card"><b>Draft (12 Nov)</b>
+<ul>
+  <li>ACM sigconf template, compiles cleanly</li>
+  <li>Survey of at least 10 papers, written in our words, every claim cited</li>
+  <li>At least 3 papers from the last five years and half beyond the syllabus</li>
+  <li>Experiment section: question, claims tested, setup, metrics</li>
+  <li>Preliminary E1 numbers on GPT-2 (Qwen if ready)</li>
+  <li>Critical analysis outline</li>
+  <li>References checked against the sources</li>
+  <li>AI acknowledgment present</li>
+  <li>Turnitin under 20%</li>
+</ul></div>
+<div class="card"><b>Final (3 Dec)</b>
+<ul>
+  <li>All four experiments with results and interpretation tied to a claim</li>
+  <li>Critical analysis complete, including specialized vs general-purpose hardware</li>
+  <li>Conclusion synthesizes survey and experiments</li>
+  <li>6-9 pages including references, two-column</li>
+  <li>Every figure labelled; every number traceable to <code>results/</code></li>
+  <li>Code and results in the repo for reproducibility</li>
+  <li>Each author can explain every claim</li>
+  <li>Turnitin under 20%; submitted on Canvas a day early</li>
+</ul></div>
+</div>
+
+<h2 id="risks">10. Risks and fallbacks</h2>
+<div class="tw"><table>
+<tr><th>Risk</th><th>Fallback</th></tr>
+<tr><td>Qwen3-1.7B too slow or out of memory on MPS</td><td>Use Qwen2.5-0.5B; evaluate on the first 64 windows only, same for every format</td></tr>
+<tr><td>An operation is not supported on MPS</td><td>Set <code>PYTORCH_ENABLE_MPS_FALLBACK=1</code>, or quantize weights on CPU once and save them</td></tr>
+<tr><td>Quantization bug gives nonsense perplexity</td><td>The three correctness tests must pass first; check that FP16 matches the published GPT-2 WikiText-2 range before quantizing</td></tr>
+<tr><td>Board work runs late</td><td>Keep the laptop and M1 versions of E2, which need no flashing; mention the board as future work</td></tr>
+<tr><td>Page limit exceeded</td><td>Move per-layer details to fewer, denser tables; cut survey summaries to two sentences each</td></tr>
+<tr><td>Turnitin above 20%</td><td>Rewrite flagged passages; check that no text came from abstracts, reading cards or AI tools</td></tr>
+<tr><td>A citation cannot be verified</td><td>Drop it; never cite from memory or from an AI summary</td></tr>
+</table></div>
+
+<h2 id="refs">11. Where things are</h2>
+<ul>
+  <li>Reference sheet with arXiv IDs and page-cited numbers: <code>paper/references_verified.md</code> (notes only).</li>
+  <li>alphaXiv folder "CSCE4930 FP4 survey": 13 arXiv papers saved.</li>
+  <li>SciSpace: the 26-paper table from the search, with results and limitations columns (use for finding papers, not for text).</li>
+  <li>Assignment: <code>paper/CSCE_4930_Paper.pdf</code>. Topic proposal: <code>paper/suggestd_topic.docx</code>.</li>
+  <li>Board toolchain and measurement code: the course project repository (<code>firmware/</code>, <code>analysis/</code>).</li>
+</ul>
+<p class="small">Plan prepared with AI assistance (Claude) on 8 Nov 2026; numbers marked as expected are predictions, not results.</p>
+
+</main>
+</body>
+</html>
