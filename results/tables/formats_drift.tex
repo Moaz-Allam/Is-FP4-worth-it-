@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+Format & Bits/weight & GPT-2 & TinyLlama-1.1B & DeepSeek-R1-1.5B & Qwen3-1.7B & Phi-3.5-mini \\
+\midrule
+FP16 & 16 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+INT4, group 128 & 4.125 & 0.160 & 0.108 & 0.302 & 0.334 & 0.180 \\
+INT4, group 32 & 4.5 & 0.091 & 0.059 & 0.185 & 0.222 & 0.120 \\
+MXFP4 & 4.25 & 0.166 & 0.100 & 0.257 & 0.260 & 0.149 \\
+NVFP4 & 4.5 & 0.061 & 0.044 & 0.128 & 0.131 & 0.074 \\
+\bottomrule
+\end{tabular}

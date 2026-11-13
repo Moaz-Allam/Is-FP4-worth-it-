@@ -1,2 +1,10 @@
 # Downloaded papers are copyrighted; keep them local, out of this public repo.
 papers/*.pdf
+
+# Build and cache output
+__pycache__/
+.pytest_cache/
+.DS_Store
+e2_cost/bench_o3
+e2_cost/bench_fast
+e2_cost/test_kernels

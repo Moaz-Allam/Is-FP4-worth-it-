@@ -1,0 +1,14 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+Format & Bits/weight & GPT-2 & TinyLlama-1.1B & DeepSeek-R1-1.5B & Qwen3-1.7B & Phi-3.5-mini \\
+\midrule
+MXFP4 round-down & 4.25 & 0.166 & 0.100 & 0.257 & 0.260 & 0.149 \\
+MXFP4 round-up & 4.25 & 0.156 & 0.081 & 0.279 & 0.262 & 0.146 \\
+MXFP4 lower-error & 4.25 & 0.151 & 0.077 & 0.278 & 0.219 & 0.130 \\
+MXFP4 threshold 7 & 4.25 & 0.143 & 0.073 & 0.256 & 0.212 & 0.129 \\
+MXFP4 threshold 7.25 & 4.25 & 0.145 & 0.075 & 0.280 & 0.215 & 0.128 \\
+MXFP4 three-quarters & 4.25 & 0.145 & 0.088 & 0.263 & 0.314 & 0.139 \\
+NVFP4 & 4.5 & 0.061 & 0.044 & 0.128 & 0.131 & 0.074 \\
+NVFP4 four-over-six & 4.5 & 0.059 & 0.041 & 0.109 & 0.127 & 0.070 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,10 @@
+\begin{tabular}{lrrr}
+\toprule
+Format & Bytes/weight & kaggle\_x86 (ns/weight) & m1\_pro (ns/weight) \\
+\midrule
+FP32 & 4.000 & 0.489 & 0.078 \\
+INT8, FP32 block scale & 1.125 & 0.283 & 0.075 \\
+MXFP4 & 0.531 & 1.554 & 0.225 \\
+MXFP4, two codes per lookup & 0.531 & 1.288 & 0.146 \\
+\bottomrule
+\end{tabular}

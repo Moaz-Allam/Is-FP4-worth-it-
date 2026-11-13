@@ -1,0 +1,18 @@
+{"machine": "m1_pro", "build": "-O3", "format": "fp32", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 4.00000, "ns_per_weight": 0.9082, "weight_gb_per_s": 4.404, "checksum": 8769.4}
+{"machine": "m1_pro", "build": "-O3", "format": "int8_fp32_scale", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 1.12500, "ns_per_weight": 0.5143, "weight_gb_per_s": 2.188, "checksum": 127744}
+{"machine": "m1_pro", "build": "-O3", "format": "mxfp4", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.5695, "weight_gb_per_s": 0.933, "checksum": -2.03417e+06}
+{"machine": "m1_pro", "build": "-O3", "format": "mxfp4_pair_table", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.1988, "weight_gb_per_s": 2.673, "checksum": -2.03417e+06}
+{"machine": "m1_pro", "build": "-O3", "format": "fp32", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 4.00000, "ns_per_weight": 0.9082, "weight_gb_per_s": 4.404, "checksum": -1257.38}
+{"machine": "m1_pro", "build": "-O3", "format": "int8_fp32_scale", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 1.12500, "ns_per_weight": 0.5140, "weight_gb_per_s": 2.189, "checksum": -4142.46}
+{"machine": "m1_pro", "build": "-O3", "format": "mxfp4", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.5776, "weight_gb_per_s": 0.920, "checksum": 10410.1}
+{"machine": "m1_pro", "build": "-O3", "format": "mxfp4_pair_table", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.1998, "weight_gb_per_s": 2.659, "checksum": 10410.1}
+{"machine": "m1_pro", "build": "-O3", "format": "memory_copy", "bytes": 268435456, "copy_gb_per_s": 45.130, "checksum": 1}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "fp32", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 4.00000, "ns_per_weight": 0.1011, "weight_gb_per_s": 39.557, "checksum": 8769.49}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "int8_fp32_scale", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 1.12500, "ns_per_weight": 0.0825, "weight_gb_per_s": 13.640, "checksum": 127744}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "mxfp4", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.2235, "weight_gb_per_s": 2.377, "checksum": -2.03417e+06}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "mxfp4_pair_table", "regime": "in_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.1426, "weight_gb_per_s": 3.727, "checksum": -2.03417e+06}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "fp32", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 4.00000, "ns_per_weight": 0.0777, "weight_gb_per_s": 51.464, "checksum": -1257.37}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "int8_fp32_scale", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 1.12500, "ns_per_weight": 0.0750, "weight_gb_per_s": 15.009, "checksum": -4142.46}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "mxfp4", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.2254, "weight_gb_per_s": 2.357, "checksum": 10410.1}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "mxfp4_pair_table", "regime": "out_of_cache", "weights": 67108864, "bytes_per_weight": 0.53125, "ns_per_weight": 0.1459, "weight_gb_per_s": 3.640, "checksum": 10410.1}
+{"machine": "m1_pro", "build": "-O3 -ffast-math", "format": "memory_copy", "bytes": 268435456, "copy_gb_per_s": 44.143, "checksum": 1}
